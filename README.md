@@ -32,3 +32,17 @@ An assignment done for WitByBit, implementing user management and adding entries
   ```
   > python manage.py runserver
   ```
+
+## Frontend setup
+
+- Move to the frontend directory and install dependencies
+
+  ```
+  > cd frontend
+  > npm install
+  ```
+
+- Run the frontend server on port 5137
+  ```
+  > npm run dev
+  ```
