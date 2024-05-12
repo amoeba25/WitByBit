@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "user"
+    'user', 
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'api.wsgi.application'
+
+AUTH_USER_MODEL = "user.CustomUser" # changing authentication method
+AUTHENTICATION_BACKENDS = ["user.authentication.EmailBackend"]
+
+TIME_ZONE =  'Asia/Kolkata' # setting timezone to IST
 
 
 # Database
