@@ -25,7 +25,16 @@ SECRET_KEY = 'django-insecure-_qc_)m9c)n!r#tsucpcppou_wj1&h-6fa46h1=@wt#0j_k3p5%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = [
+    "127.0.0.1", 
+    "localhost"
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173', # react server
+]
+# CORS_ALLOW_CREDENTIALS = False
 
 
 # Application definition
@@ -37,12 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user', 
     'rest_framework',
+    'corsheaders',
+    'user', 
     'contact'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +64,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'api.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True # cors 
+CORS_ALLOW_CREDENTIALS = True
+
 
 TEMPLATES = [
     {
