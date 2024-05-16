@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Contact = () => {
   const [contacts, setContacts] = useState([]); //state to maintain all the contact values
@@ -13,6 +14,7 @@ const Contact = () => {
       .get("http://localhost:8000/contact/entries/")
       .then((response) => {
         setContacts(response.data);
+        setEditedData(response.data);
 
         // scans through data and creates
         // columns from the keys of the first objects in JSON data
@@ -47,16 +49,17 @@ const Contact = () => {
   };
 
   const handleInputchange = (e, row, accessor) => {
-    const value = e.target;
+    const value = e.target.value;
+
     setEditedData((prevState) => ({
       ...prevState,
       [row.id]: { ...prevState[row.id], [accessor]: value },
     }));
   };
 
-  const handleSave = (row) => {
-    // Here you can send the edited data to the backend to update the record
-    console.log("Saving edited data:", editedData[row.id]);
+  // function to send data in bulk
+  const handleSave = () => {
+    console.log("hi");
   };
 
   const toggleEditing = () => {
@@ -67,19 +70,31 @@ const Contact = () => {
     useTable({ columns: columnVal, data: contacts });
 
   return (
-    <div className="App">
+    <div className="contact">
       {/* Edit button or Submit button logic  */}
 
-      {editing ? (
-        <div>
-          <button onClick={toggleEditing}>Cancel</button>
-          <button>Submit</button>
-        </div>
-      ) : (
-        <button onClick={toggleEditing}>Edit</button>
-      )}
+      <div className="contact-header">
+        <h3>Contacts</h3>
 
-      <div className="container">
+        {editing ? (
+          <div className="contact-button-group">
+            <button onClick={toggleEditing} className="cancel-button">
+              Cancel
+            </button>
+            <button onClick={handleSave} className="submit-button">
+              Submit
+            </button>
+          </div>
+        ) : (
+          <div className="contact-button-group">
+            <button onClick={toggleEditing} className="submit-button">
+              Edit
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="contact-table">
         {contacts ? (
           <table {...getTableProps()}>
             <thead>
@@ -90,7 +105,7 @@ const Contact = () => {
                       {column.render("Header")}
                     </th>
                   ))}
-                  <th>delete</th>
+                  <th>+</th>
                 </tr>
               ))}
             </thead>
@@ -108,15 +123,18 @@ const Contact = () => {
                           }
                           disabled={!editing}
                           onChange={(e) =>
-                            handleInputChange(e, row, cell.column.id)
+                            handleInputchange(e, row, cell.column.id)
                           }
                         />
                       </td>
                     ))}
                     <td>
                       {editing && (
-                        <button onClick={() => handleDelete(row.original.id)}>
-                          delete
+                        <button
+                          onClick={() => handleDelete(row.original.id)}
+                          className="delete-button"
+                        >
+                          <RiDeleteBin6Line />
                         </button>
                       )}
                     </td>

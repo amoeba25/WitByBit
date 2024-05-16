@@ -1,11 +1,299 @@
-html,
-body {
-  height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  --black: #000; 
+  --blue: #177CFF;
+  --white : #FFF;
+  --grey: #A8B4B9;
+  --dark-grey : #888888;
+  --light-grey : #F7F8FA;
+  --red : #FF2F2F; 
 }
-body {
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+/* body {
   margin: 0;
   background: -webkit-linear-gradient(45deg, #49a09d, #5f2c82);
   background: linear-gradient(45deg, #49a09d, #5f2c82);
   font-family: sans-serif;
   font-weight: 100;
+} */
+
+.mainpage{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidepanel {
+  /* background-color: red; */
+  width: 30%;
+  padding: 3em;
+}
+
+.mainpanel {
+  /* background-color: yellow; */
+  width: 70%;
+}
+
+/* Logo component styles */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.app-name {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-right: 0.5em;
+  letter-spacing: 3px;
+}
+
+.app-logo {
+  height: 32px;
+  width: 32px;
+}
+
+/* Auth page styles */
+.auth-mainpanel {
+  background-color: var(--light-grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--grey);
+}
+.filelock-logo{
+  color: var(--dark-grey);
+  font-size: 10rem;
+}
+
+/* Login component styles */
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.login-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.login-info {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: var(--grey);
+}
+
+.user-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.user-buttons button.active {
+  font-weight: bold;
+  border: 1px solid var(--blue);
+}
+
+.divider {
+  margin: 0 10px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-label {
+  margin-bottom: 5px;
+}
+
+.login-input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Navbar styles */
+.nav-sidepanel {
+  border-right: 1px solid var(--grey);
+}
+.info {
+  margin-top: 5em;
+}
+.info-text {
+  font-weight: 500;
+  margin: 0;
+  font-size: 1rem;
+}
+.info-email {
+  color: var(--grey);
+  margin: 3px;
+  font-size: 0.8rem;
+}
+.nav-tab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black);
+}
+.contact-logo {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+.contact-text {
+  font-size: 1rem;
+}
+.nav-links {
+  margin-top: 3em;
+}
+
+.logout{
+  margin-top: 10em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logout-logo {
+  margin-right: 3px;
+}
+
+.logout-text{
+  color: var(--red);
+  text-decoration: none;
+}
+
+
+/* Contact page styles */
+.contact {
+  margin-top: 5em;
+}
+
+.contact-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 2em;
+}
+
+.contact-header h3{
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.submit-button {
+  padding: 10px 30px;
+  border: none;
+  background-color: var(--blue);
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
+.cancel-button {
+  padding: 10px 25px;
+  border: 1px solid var(--blue);
+  background-color: var(--white);
+  color: var(--blue);
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  margin-right: 10px;
+}
+
+.delete-button {
+  color: var(--red);
+  background-color: var(--white);
+  border: none;
+  font-size: 1.5rem;
+}
+
+.delete-button:hover{
+  cursor: pointer;
+}
+
+.contact-table {
+  margin: 1em 2em;
+}
+
+.contact-table table {
+  width: 100%;
+  border: 1px solid var(--grey);
+}
+
+.contact-table th, td {
+  border: 1px solid var(--light-grey);
+  padding: 8px;
+  text-align: left;
+}
+
+.contact-table th {
+  background-color: #f2f2f2;
+}
+
+.contact-table input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+
+.contact-table p {
+  margin: 20px;
+}
+
+/* Future panels */
+
+.future-panel {
+  background-color: var(--light-grey);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.future-text{
+  font-size: 2rem;
+  font-weight: 400;
 }
