@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router-dom";
 const MainPage = () => {
   return (
     <div className="mainpage">
-      <NavSidePanel user={{ type: "admin", email: "soham@gmail.com" }} />
+      <NavSidePanel />
       <Routes>
         <Route path="/" element={<ContactMainPanel />} />
         <Route path="/profile" element={<ProfileMainPanel />} />

@@ -3,17 +3,20 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { LuLogOut } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "../../Axios";
-import { userTypeState } from "../../atoms/atoms";
+import { userTypeState, currentUserEmailState } from "../../atoms/atoms";
 import { useRecoilValue } from "recoil";
 
-const NavSidePanel = ({ user }) => {
+const NavSidePanel = () => {
   const navigate = useNavigate();
   const userType = useRecoilValue(userTypeState);
+  const userEmail = useRecoilValue(currentUserEmailState);
 
   const handleLogout = async () => {
     try {
       const response = await Axios.get("/users/logout/");
 
+      // Remove isAuthenticated from local storage
+      localStorage.removeItem("isAuthenticated");
       // redirects
       navigate("/");
     } catch (error) {
@@ -26,7 +29,7 @@ const NavSidePanel = ({ user }) => {
       <Logo />
       <div className="info">
         <p className="info-text">Logged in as {userType}</p>
-        <p className="info-email">({user.email})</p>
+        <p className="info-email">{userEmail}</p>
       </div>
 
       <div className="nav-links">

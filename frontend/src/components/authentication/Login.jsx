@@ -5,10 +5,12 @@ import Axios from "../../Axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { userTypeState } from "../../atoms/atoms";
+import { userTypeState, currentUserEmailState } from "../../atoms/atoms";
 
 const Login = () => {
   const [userType, setUserType] = useRecoilState(userTypeState);
+  const [userEmail, setUserEmail] = useRecoilState(currentUserEmailState);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -38,6 +40,9 @@ const Login = () => {
         // succesful authorization
         if (response.data.role == userType) {
           toast.success("Login success");
+          // Store isAuthenticated in local storage
+          localStorage.setItem("isAuthenticated", "true");
+          setUserEmail(response.data.email);
           navigate("/main");
         } else {
           toast.error(`Login for ${userType} failed`);
