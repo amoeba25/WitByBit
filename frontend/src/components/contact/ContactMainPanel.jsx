@@ -1,10 +1,10 @@
 import React from "react";
-import Contact from "./ContactTable";
+import ContactTable from "./ContactTable";
 
 const ContactMainPanel = () => {
   return (
     <div className="mainpanel">
-      <Contact />
+      <ContactTable />
     </div>
   );
 };

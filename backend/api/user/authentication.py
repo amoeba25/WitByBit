@@ -2,6 +2,8 @@
 
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth import get_user_model
+from rest_framework.response import Response
+from rest_framework.exceptions import AuthenticationFailed
 
 class EmailBackend(ModelBackend):
     
@@ -12,5 +14,7 @@ class EmailBackend(ModelBackend):
             user = UserModel.objects.get(email = username)
             if user.check_password(password):
                 return user
+            else:
+                return None
         except UserModel.DoesNotExist:
-            return None
+            return AuthenticationFailed("User dosen't exist")

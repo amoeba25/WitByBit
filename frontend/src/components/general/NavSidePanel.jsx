@@ -1,14 +1,31 @@
 import Logo from "./Logo";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { LuLogOut } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Axios from "../../Axios";
+import { userTypeState } from "../../atoms/atoms";
+import { useRecoilValue } from "recoil";
 
 const NavSidePanel = ({ user }) => {
+  const navigate = useNavigate();
+  const userType = useRecoilValue(userTypeState);
+
+  const handleLogout = async () => {
+    try {
+      const response = await Axios.get("/users/logout/");
+
+      // redirects
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="sidepanel nav-sidepanel">
       <Logo />
       <div className="info">
-        <p className="info-text">Logged in as {user.type}</p>
+        <p className="info-text">Logged in as {userType}</p>
         <p className="info-email">({user.email})</p>
       </div>
 
@@ -33,9 +50,9 @@ const NavSidePanel = ({ user }) => {
 
       <div className="logout">
         <LuLogOut className="logout-logo" />
-        <a href="" className="logout-text">
+        <button href="" className="logout-text" onClick={handleLogout}>
           Logout
-        </a>
+        </button>
       </div>
     </div>
   );

@@ -63,6 +63,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'user.authentication.EmailBackend',  # Custom backend for email authentication
+]
+
+# enabling session based auth
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
+
 ROOT_URLCONF = 'api.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True # cors 

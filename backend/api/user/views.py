@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -15,7 +15,7 @@ class LoginAPIView(APIView):
     """
     Logs a user in, provided the correct email and password
 
-    returns email as response
+    returns email and user-type as response
     """
     serializer_class = LoginSerializer
     
@@ -24,6 +24,9 @@ class LoginAPIView(APIView):
         serializer.is_valid(raise_exception= True)
         user = serializer.validated_data['user']
         role = 'admin' if user.is_staff else 'user' # set the role as admin or non-admin member
+        
+        # login to create a session
+        login(request, user)
         return Response({"email": user.email, "role": role}, status=status.HTTP_200_OK)
 
 class LogoutAPIView(APIView):

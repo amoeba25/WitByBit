@@ -2,12 +2,15 @@ import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useRecoilValue } from "recoil";
+import { userTypeState } from "../../atoms/atoms";
 
-const Contact = () => {
+const ContactTable = () => {
   const [contacts, setContacts] = useState([]); //state to maintain all the contact values
   const [columnVal, setColumnVal] = useState([]); // state to maintain columns that are displayed
   const [editedData, setEditedData] = useState({}); // changing the data for bulk update
   const [editing, setEditing] = useState(false); // editing state
+  const userType = useRecoilValue(userTypeState);
 
   useEffect(() => {
     axios
@@ -76,21 +79,27 @@ const Contact = () => {
       <div className="contact-header">
         <h3>Contacts</h3>
 
-        {editing ? (
-          <div className="contact-button-group">
-            <button onClick={toggleEditing} className="cancel-button">
-              Cancel
-            </button>
-            <button onClick={handleSave} className="submit-button">
-              Submit
-            </button>
+        {userType === "admin" ? (
+          <div className="button-group">
+            {editing ? (
+              <div className="contact-button-group">
+                <button onClick={toggleEditing} className="cancel-button">
+                  Cancel
+                </button>
+                <button onClick={handleSave} className="submit-button">
+                  Submit
+                </button>
+              </div>
+            ) : (
+              <div className="contact-button-group">
+                <button onClick={toggleEditing} className="submit-button">
+                  Edit
+                </button>
+              </div>
+            )}
           </div>
         ) : (
-          <div className="contact-button-group">
-            <button onClick={toggleEditing} className="submit-button">
-              Edit
-            </button>
-          </div>
+          <></>
         )}
       </div>
 
@@ -151,4 +160,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactTable;

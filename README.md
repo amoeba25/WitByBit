@@ -17,7 +17,7 @@ An assignment done for WitByBit, implementing user management and adding entries
 - Install the requirements.txt, after activating the venv
 
   ```
-  pip install requirements.txt
+  pip install -r requirements.txt
   ```
 
 - Move to the project directory and run migrations
