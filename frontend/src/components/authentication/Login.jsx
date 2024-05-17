@@ -67,7 +67,6 @@ const Login = () => {
         >
           <PiUserSquare /> Admin
         </button>
-        <span className="divider">/</span>
         <button
           onClick={setUser}
           className={userType === "user" ? "active" : ""}

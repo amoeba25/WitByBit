@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<AuthMainPage />} />
-        <Route path="/main/*" element={<ProtectedRoute />}>
+        <Route path="/" element={<ProtectedRoute />}>
           <Route path="/main/*" element={<MainPage />} />
         </Route>
       </Routes>

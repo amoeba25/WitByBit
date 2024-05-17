@@ -5,9 +5,7 @@ import "./index.css";
 import { RecoilRoot, useRecoilValue } from "recoil";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
-  </React.StrictMode>
+  <RecoilRoot>
+    <App />
+  </RecoilRoot>
 );

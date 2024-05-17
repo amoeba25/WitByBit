@@ -96,7 +96,7 @@ body,
 
 .user-buttons {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 20px;
 }
 
@@ -107,11 +107,13 @@ body,
   display: flex;
   align-items: center;
   font-size: 16px;
+  padding: 5px 25px;
 }
 
 .user-buttons button.active {
   font-weight: bold;
-  border: 1px solid var(--blue);
+  border: 2px solid var(--blue);
+  background-color: #6faeff;
 }
 
 .divider {
@@ -187,6 +189,7 @@ body,
   display: flex;
   flex-direction: row;
   align-items: center;
+
 }
 
 .logout-logo {
@@ -196,8 +199,16 @@ body,
 .logout-text{
   color: var(--red);
   text-decoration: none;
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--white);
+  font-size: 1rem;
+
 }
 
+.logout-text:hover {
+  cursor: pointer;
+}
 
 /* Contact page styles */
 .contact {
@@ -296,4 +307,22 @@ body,
 .future-text{
   font-size: 2rem;
   font-weight: 400;
+}
+
+/* Modal styles */
+
+.expiry-modal{
+  width: 500px;
+}
+
+.modal-button {
+  background-color: var(--blue);
+  padding: 10px 25px;
+  color: var(--white);
+  border: none;
+  margin-top: 10px;
+}
+
+.modal-button:hover{
+  cursor: pointer;
 }

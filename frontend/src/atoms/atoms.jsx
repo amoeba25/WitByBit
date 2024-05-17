@@ -9,3 +9,8 @@ export const currentUserEmailState = atom({
   key: "currentUserEmailState",
   default: "",
 });
+
+export const timeoutToastState = atom({
+  key: "timeoutToastState",
+  default: "",
+});

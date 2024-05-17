@@ -61,9 +61,7 @@ const ContactTable = () => {
   };
 
   // function to send data in bulk
-  const handleSave = () => {
-    console.log("hi");
-  };
+  const handleSave = () => {};
 
   const toggleEditing = () => {
     setEditing(!editing);
@@ -82,14 +80,16 @@ const ContactTable = () => {
         {userType === "admin" ? (
           <div className="button-group">
             {editing ? (
-              <div className="contact-button-group">
-                <button onClick={toggleEditing} className="cancel-button">
-                  Cancel
-                </button>
-                <button onClick={handleSave} className="submit-button">
-                  Submit
-                </button>
-              </div>
+              <>
+                <div className="contact-button-group">
+                  <button onClick={toggleEditing} className="cancel-button">
+                    Cancel
+                  </button>
+                  <button onClick={handleSave} className="submit-button">
+                    Submit
+                  </button>
+                </div>
+              </>
             ) : (
               <div className="contact-button-group">
                 <button onClick={toggleEditing} className="submit-button">

@@ -80,6 +80,10 @@ ROOT_URLCONF = 'api.urls'
 CORS_ALLOW_ALL_ORIGINS = True # cors 
 CORS_ALLOW_CREDENTIALS = True
 
+# auto-logout after 2 minutes
+SESSION_COOKIE_AGE = 120000
+SESSION_SAVE_EVERY_REQUEST = True # "False" by default
+
 
 TEMPLATES = [
     {
